@@ -1,0 +1,27 @@
+{
+  "name": "statics_server",
+  "version": "1.0.0",
+  "description": "<h3>静态文件服务器</h3> Nodejs Koa",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "koa": "^1.2.0",
+    "koa-router": "^5.4.0",
+    "koa-static-cache": "3.1.7",
+    "nodemon": "1.11.0"
+  },
+  "scripts": {
+    "start": "node --harmony app.js",
+    "test": "nodemon --harmony app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wzcssw/statics_server.git"
+  },
+  "author": "wzcssw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wzcssw/statics_server/issues"
+  },
+  "homepage": "https://github.com/wzcssw/statics_server#readme"
+}
