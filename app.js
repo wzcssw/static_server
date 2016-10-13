@@ -11,7 +11,7 @@ app.use(body({formidable:{uploadDir: __dirname}}));
 app.use(function *(next){
   if(this.request.method=="POST" && this.path=="/web_hooks"){
     console.log(this.request.body);
-    this.body = "OK"
+    this.body = "OK" 
     return;
   }
 });
