@@ -7,6 +7,8 @@ let config = require('./config')
 // web-hooks
 app.use(function *(next){
   if(this.request.method=="POST"){
+    console.log(this.path);
+    console.log("==========================");
     console.log(this.request);
     this.body = "哦了"
     return;
