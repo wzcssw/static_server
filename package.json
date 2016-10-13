@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "<h3>静态文件服务器</h3> Nodejs Koa",
   "main": "app.js",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "koa": "^1.2.0",
-    "koa-router": "^5.4.0",
     "koa-static-cache": "3.1.7",
     "nodemon": "1.11.0"
   },
