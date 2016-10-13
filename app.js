@@ -8,7 +8,7 @@ let config = require('./config')
 app.use(function *(next){
   if(this.request.method=="POST"){
     console.log(this.path);
-    console.log("==========================");
+    console.log("==========================**");
     console.log(this.request);
     this.body = "哦了"
     return;
