@@ -4,8 +4,17 @@ let path = require('path')
 let static_cache = require('koa-static-cache')
 let config = require('./config')
 
+// web-hooks
+app.use(function *(next){
+  if(this.request.method=="POST"){
+    console.log(this.request);
+    this.body = "哦了"
+    return;
+  }
+});
 // 默认路径
 app.use(function *(next){
+  console.log(this.request.method=="POST");
   if(this.path=="/")
     this.path = config.index
   yield next;
