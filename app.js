@@ -9,13 +9,9 @@ let config = require('./config')
 app.use(body({formidable:{uploadDir: __dirname}}));
 // web-hooks
 app.use(function *(next){
-  if(this.request.method=="POST"){
-    console.log(this.path);
-    console.log("==========================**");
-    console.log(this.request);
-    console.log("========================== <<");
+  if(this.request.method=="POST" && this.path=="/web_hooks"){
     console.log(this.request.body);
-    this.body = "哦了"
+    this.body = "OK"
     return;
   }
 });
