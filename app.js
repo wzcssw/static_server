@@ -5,7 +5,7 @@ let static_cache = require('koa-static-cache')
 let body = require('koa-body')
 let config = require('./config')
 
-// 处理post参数 (this.request.body)
+// 处理post参数(this.request.body)
 app.use(body({formidable:{uploadDir: __dirname}}));
 // web-hooks
 app.use(function *(next){
