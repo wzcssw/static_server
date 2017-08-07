@@ -14,5 +14,8 @@ app.use(function *(next){
 app.use(static_cache(path.join(__dirname, config.root_dir), {
   maxAge: config.max_storage_age
 }))
+
 // 启动
-app.listen(config.default_port)
+app.listen(config.default_port,function(){
+  console.log("server started at " + config.default_port);
+})
