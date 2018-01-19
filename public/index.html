@@ -1,8 +1,81 @@
 <html>
-    <head>
-        <title>wzcssw</title>
-    </head>
-    <body style="text-align: center">
-        <img src="/img/asd.gif" alt="猪猪" style="width: 30%;margin-top: 5%">
-    </body>
+<head>
+    <title>Lottery</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+    <meta name="format-detection" content="telephone=no" />
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        .lotterybox{
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lotterybox"></div>
+    
+    <!-- Zepto or jQuery -->
+    <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+
+    <link rel="stylesheet" href="./dist/lottery.min.css" />
+    <!-- <script src="./dist/lottery.compact.min.js"></script> -->
+    <!-- <script src="./dist/lottery_2.compact.min.js"></script> -->
+    <script src="./vendor/confetti.js"></script>
+    <script src="./vendor/material-avatar.js"></script>
+    <script src="./vendor/move.min.js"></script>
+    <script src="./dist/lottery.js"></script>
+    <!-- ROCK ON -->
+    <audio id="bgMusic" style="display: none">
+        <source = src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/bg.mp3" type="audio/mp3">
+    </audio>
+    <audio id="startMusic" style="display: none" loop="loop">
+        <source = src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/start.mp3" type="audio/mp3">
+    </audio>
+    <script>
+        $().ready(function(){
+            var audio = document.getElementById("bgMusic");
+            //播放(继续播放)
+            audio.play();
+            
+            var api_url = '/childs'
+            var term = getUrlParam("term")
+            var option = getUrlParam("reset")
+            if (term!=null){
+                term = parseInt(term);
+            }else{
+                alert("未输入中奖人数");
+            }
+            if(option!=null){
+                    
+                    api_url = api_url + "?option=clear"
+                    
+            }
+            
+            $.lottery({
+                el: '.lotterybox',
+                api: api_url,
+                once: true,
+                subtitle: "company",
+                // desc: "title",
+                timeout: 40000000,
+                number: term
+            });
+
+            window.setItemSize(108);
+        });
+            
+        //获取url中的参数
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+    </script>
+
+</body>
+
 </html>
