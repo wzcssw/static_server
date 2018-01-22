@@ -74,29 +74,25 @@
 
             if(option!=null && term==1){
                 titleImage = "special";
-                showTitle();
             }else{
                 switch (term) {
                     case 20:
                         titleImage = "first";
-                        showTitle();
                         break;
                     case 15:
                         titleImage = "second";
-                        showTitle();
                         break;
                     case 4:
                         titleImage = "third";
-                        showTitle();
                         break;
                     case 1:
                         titleImage = "fourth";
-                        showTitle();
                         break;
                     default:
                         break;
                 }
             }
+            showTitle();
             
             
             $.lottery({
@@ -134,7 +130,7 @@
             showMask();
             $('#'+titleImage).show();
             $('#'+titleImage).addClass('animated bounceInDown');
-            setTimeout("hideMask()",1600)
+            setTimeout("hideMask()",2300)
         };
     </script>
 
