@@ -121,7 +121,11 @@
       return $('#dh-lottery-winner').removeClass('is-active');
     });
     $('.dh-modal-close').click(function() {
-      window.location = next_url;
+      if(next_url == undefined){
+        location.reload();
+      }else{
+        window.location = next_url;
+      }
     });
     $('#dh-lottery-history .dh-modal-close').click(function() {
       return $('#dh-lottery-history').removeClass('is-active');

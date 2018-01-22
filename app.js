@@ -49,6 +49,9 @@ app.use(function *(next){
       case 5:
         next_term = 1
         break;
+      case 1:
+        next_term = "1&reset=clear"
+        break;
       default:
         next_term = 1
         break;
