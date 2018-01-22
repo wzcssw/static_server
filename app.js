@@ -44,9 +44,9 @@ app.use(function *(next){
         next_term = 15
         break;
       case 15:
-        next_term = 5
+        next_term = 4 
         break;
-      case 5:
+      case 4:
         next_term = 1
         break;
       case 1:

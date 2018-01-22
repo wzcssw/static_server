@@ -12,22 +12,35 @@
         .lotterybox{
             height: 100%;
         }
+        .mask {       
+            position: absolute; top: 0px; filter: alpha(opacity=30); background-color: #000;     
+            z-index: 1002; left: 0px;     
+            opacity:0.9; -moz-opacity:0.5;     
+        }    
     </style>
 </head>
 
 <body>
-    <div class="lotterybox"></div>
-    
+    <!-- 遮罩层 -->
+    <div id="mask" class="mask" style="text-align:center;display: none;">
+            <img style="display: none;width: 40%;margin-top: 10%" id="first" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/%E6%8A%BD%E5%A5%96%E7%AC%AC%E4%B8%80%E8%BD%AE.png" alt="第一轮">
+            <img style="display: none;width: 40%;margin-top: 10%" id="second" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/%E6%8A%BD%E5%A5%96%E7%AC%AC%E4%BA%8C%E8%BD%AE.png" alt="第二轮">
+            <img style="display: none;width: 40%;margin-top: 10%" id="third" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/%E6%8A%BD%E5%A5%96%E7%AC%AC%E4%B8%89%E8%BD%AE.png" alt="第三轮">
+            <img style="display: none;width: 40%;margin-top: 10%" id="fourth" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/%E5%87%86%E5%A4%87%E6%8A%BD%E5%8F%96%E4%B8%80%E7%AD%89%E5%A5%96.png" alt="一等">
+            <img style="display: none;width: 40%;margin-top: 10%" id="special" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/%E7%89%B9%E7%AD%89%E5%A5%96%E8%A6%81%E6%9D%A5%E5%95%A6.png" alt="特等">
+    </div>
     <!-- Zepto or jQuery -->
-    <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
-
+    <!-- <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script> -->
+    <script src="https://cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
     <link rel="stylesheet" href="./dist/lottery.min.css" />
-    <!-- <script src="./dist/lottery.compact.min.js"></script> -->
-    <!-- <script src="./dist/lottery_2.compact.min.js"></script> -->
     <script src="./vendor/confetti.js"></script>
     <script src="./vendor/material-avatar.js"></script>
     <script src="./vendor/move.min.js"></script>
     <script src="./dist/lottery.js"></script>
+    <link rel="stylesheet" href="./dist/animate.css" />
+    <!-- <h1 class="animated infinite bounceInDown">Example</h1> -->
+    <div class="lotterybox"></div>
+    
     <!-- ROCK ON -->
     <audio id="bgMusic" style="display: none">
         <!-- <source = src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/bg.mp3" type="audio/mp3"> -->
@@ -39,7 +52,9 @@
     <audio id="stopMusic" style="display: none">
         <source = src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/stop.mp3" type="audio/mp3">
     </audio>
+    <img src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/dog_logo.png" style="position:absolute;left:0;bottom:0;width: 12%">
     <script>
+        var titleImage = "";
         $().ready(function(){
             var audio = document.getElementById("bgMusic");
             //播放(继续播放)
@@ -56,6 +71,33 @@
             if(option!=null){
                     api_url = api_url + "?option=clear"
             }
+
+            if(option!=null && term==1){
+                titleImage = "special";
+                showTitle();
+            }else{
+                switch (term) {
+                    case 20:
+                        titleImage = "first";
+                        showTitle();
+                        break;
+                    case 15:
+                        titleImage = "second";
+                        showTitle();
+                        break;
+                    case 4:
+                        titleImage = "third";
+                        showTitle();
+                        break;
+                    case 1:
+                        titleImage = "fourth";
+                        showTitle();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
             
             $.lottery({
                 el: '.lotterybox',
@@ -70,12 +112,30 @@
             window.setItemSize(108);
         });
             
-        //获取url中的参数
+        // 获取url中的参数
         function getUrlParam(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
             var r = window.location.search.substr(1).match(reg);  //匹配目标参数
             if (r != null) return unescape(r[2]); return null; //返回参数值
-        }
+        };
+        // 显示遮罩层
+        function showMask(){     
+            $("#mask").css("height",$(document).height());     
+            $("#mask").css("width",$(document).width());     
+            $("#mask").fadeIn(500);
+        };
+        // 隐藏遮罩层  
+        function hideMask(){
+            $('#'+titleImage).addClass('animated fadeOutUp'); 
+            $("#mask").fadeOut(1000);     
+        };
+        // 标题页
+        function showTitle(){     
+            showMask();
+            $('#'+titleImage).show();
+            $('#'+titleImage).addClass('animated bounceInDown');
+            setTimeout("hideMask()",1600)
+        };
     </script>
 
 </body>
