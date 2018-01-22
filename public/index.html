@@ -30,10 +30,14 @@
     <script src="./dist/lottery.js"></script>
     <!-- ROCK ON -->
     <audio id="bgMusic" style="display: none">
-        <source = src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/bg.mp3" type="audio/mp3">
+        <!-- <source = src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/bg.mp3" type="audio/mp3"> -->
+            <source = src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/Kirby's%20Dream%20Band%20-%20Dream%20Land%20Days.mp3" type="audio/mp3">
     </audio>
     <audio id="startMusic" style="display: none" loop="loop">
         <source = src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/start.mp3" type="audio/mp3">
+    </audio>
+    <audio id="stopMusic" style="display: none">
+        <source = src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/stop.mp3" type="audio/mp3">
     </audio>
     <script>
         $().ready(function(){
@@ -50,9 +54,7 @@
                 alert("未输入中奖人数");
             }
             if(option!=null){
-                    
                     api_url = api_url + "?option=clear"
-                    
             }
             
             $.lottery({
@@ -78,4 +80,4 @@
 
 </body>
 
-</html>
+</html> 

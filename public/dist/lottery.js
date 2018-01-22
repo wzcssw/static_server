@@ -352,10 +352,10 @@
   var stopLottery = function(){
     settings.$el.removeClass('running-lottery')
     console.log('Lottery: stoping...');
-    // var audio = document.getElementById("bgMusic");
-    // audio.pause();
-    var startMusic = document.getElementById("startMusic");
-    startMusic.pause();
+    var audio = document.getElementById("startMusic");
+    audio.pause();
+    var startMusic = document.getElementById("stopMusic");
+    startMusic.play();
     clearTimeout(lotteryTimeout);
     // 清空中奖dom和本轮获奖者名单
     $("#dh-lottery-winner .dh-modal-content").html("");
