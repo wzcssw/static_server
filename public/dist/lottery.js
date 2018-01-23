@@ -30,8 +30,38 @@
   var saveIconHtml = "<i class='dh-icon dh-icon-dice'>💾<svg><use xlink:href='#dh-save'/></svg></i>"
   var okayIconHtml = "<i class='dh-icon dh-icon-okay'>👌<svg><use xlink:href='#dh-okay'/></svg></i>"
   var crownIconHtml = "<i class='dh-icon dh-icon-crown'>👑<svg><use xlink:href='#dh-crown'/></svg></i>"
-
+  
   var next_url;
+
+  // 获取url中的参数
+  var getParam = function (name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+      var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+      if (r != null) return unescape(r[2]); return null; //返回参数值
+  };
+  //  动态改变图标大小
+  var option = getParam("reset")
+  var term = getParam("term")
+  if(option!=null && term=="1"){
+  }else{
+    switch (term) {
+      case "20":
+        itemSideSize = '108';
+        break;
+      case "15":
+        itemSideSize = '138';
+        break;
+      case "4":
+        itemSideSize = '178';
+        break;
+      case "1":
+        itemSideSize = '190';
+        break;
+      default:
+        break;
+    }
+  }
+  
 
   //生成dom
   var initDom = function(dom){
