@@ -15,19 +15,23 @@
         .mask {       
             position: absolute; top: 0px; filter: alpha(opacity=30); background-color: #000;     
             z-index: 1002; left: 0px;     
-            opacity:0.9; -moz-opacity:0.5;     
+            opacity:0.95; -moz-opacity:0.5;     
         }    
     </style>
 </head>
 
 <body>
     <!-- 遮罩层 -->
-    <div id="mask" class="mask" style="text-align:center;display: none;">
+    <div id="mask" class="mask" style="text-align:center;display: none;" onclick="hideMask()">
             <img style="display: none;width: 40%;margin-top: 10%" id="first" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/%E6%8A%BD%E5%A5%96%E7%AC%AC%E4%B8%80%E8%BD%AE.png" alt="第一轮">
             <img style="display: none;width: 40%;margin-top: 10%" id="second" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/%E6%8A%BD%E5%A5%96%E7%AC%AC%E4%BA%8C%E8%BD%AE.png" alt="第二轮">
             <img style="display: none;width: 40%;margin-top: 10%" id="third" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/%E6%8A%BD%E5%A5%96%E7%AC%AC%E4%B8%89%E8%BD%AE.png" alt="第三轮">
             <img style="display: none;width: 40%;margin-top: 10%" id="fourth" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/%E5%87%86%E5%A4%87%E6%8A%BD%E5%8F%96%E4%B8%80%E7%AD%89%E5%A5%96.png" alt="一等">
-            <img style="display: none;width: 40%;margin-top: 10%" id="special" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/%E7%89%B9%E7%AD%89%E5%A5%96%E8%A6%81%E6%9D%A5%E5%95%A6.png" alt="特等">
+            <img style="display: none;width: 40%;margin-top: 10%" id="special" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/annu_img/thanks_1.png" alt="特等">
+            <div>
+                <img style="display: none;width: 20%;margin-top: 10%" id="weiqi" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/annu_img/%E5%88%98%E4%BC%9F%E5%A5%87_last.jpg">
+                <img style="display: none;width: 20%;margin-top: 10%" id="wang" src="http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/annu_img/%E6%B1%AA%E8%80%81%E5%B8%88_last.jpg">
+            </div>
     </div>
     <!-- Zepto or jQuery -->
     <!-- <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script> -->
@@ -70,6 +74,9 @@
             }
             if(option!=null){
                     api_url = api_url + "?option=clear"
+                    if(term==1){
+                        // thanks();
+                    }
             }
 
             if(option!=null && term==1){
@@ -92,7 +99,7 @@
                         break;
                 }
             }
-            showTitle();
+            showTitle(titleImage);
             
             
             $.lottery({
@@ -127,11 +134,22 @@
             $("#mask").fadeOut(1000);     
         };
         // 标题页
-        function showTitle(){     
+        function showTitle(titleImage){     
             showMask();
-            $('#'+titleImage).show();
-            $('#'+titleImage).addClass('animated bounceInDown');
-            setTimeout("hideMask()",2300)
+            if(titleImage=="special"){
+                $('#'+titleImage).fadeIn(3000,function(){
+                    $('#weiqi').fadeIn(1800,function(){
+                        $('#wang').fadeIn(1800,function(){});
+                    });
+                });
+            }else{
+                $('#'+titleImage).show();
+                $('#'+titleImage).addClass('animated bounceInDown');
+            }
+        };
+        // 感谢页
+        function thanks(){
+            alert(0)
         };
     </script>
 
