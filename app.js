@@ -8,6 +8,7 @@ let config = require('./config')
 
 let childs  = require("./sample-data.json")
 let all_childs  = require("./sample-data.json")
+let left_childs 
 
 // 解析post请求
 app.use(bodyParser());
@@ -27,8 +28,17 @@ app.use(function *(next){
     if(this.query.option=="clear"){
       console.log("mark!!!!!!")
       childs  = all_childs
-    }
+    }                                         
     this.body = childs;
+  }else if(this.path == "/last"){
+    if(this.query.reset == "true"){
+      left_childs = {}
+    }
+    var str_result = "O(∩_∩)O   "
+    left_childs.forEach(function(e){
+        str_result += " "+e.name
+    });
+    this.body = str_result;
   }else if (this.path == "/kill_childs"){ //  删除已经获奖的人员
     var childs_names = this.request.body.childs_name.split(",");
     var temp_childs = [];
@@ -38,6 +48,7 @@ app.use(function *(next){
       }
     });
     childs = temp_childs;
+    left_childs = childs
     var next_term = 20;
     switch (childs_names.length) {
       case 20:
