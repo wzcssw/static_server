@@ -503,4 +503,22 @@
             "title": ""
         }
     }
+    ,
+    {
+        "name": "吴越",
+        "avatar": "http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/annu_img/%E5%90%B4%E8%B6%8A.jpg",
+        "data": {
+            "company": "",
+            "title": ""
+        }
+    }
+    ,
+    {
+        "name": "曹雪静",
+        "avatar": "http://tongxin-dev-image.oss-cn-beijing.aliyuncs.com/annu_img/%E6%9B%B9%E9%9B%AA%E9%9D%99.jpg",
+        "data": {
+            "company": "",
+            "title": ""
+        }
+    }
 ]
