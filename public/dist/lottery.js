@@ -25,7 +25,7 @@
   }
 
   var profileEls = {}
-  var itemSideSize = '108';
+  var itemSideSize = '88';
   var diceIconHtml = "<i class='dh-icon dh-icon-dice'>🎲<svg><use xlink:href='#dh-dice'/></svg></i>"
   var saveIconHtml = "<i class='dh-icon dh-icon-dice'>💾<svg><use xlink:href='#dh-save'/></svg></i>"
   var okayIconHtml = "<i class='dh-icon dh-icon-okay'>👌<svg><use xlink:href='#dh-okay'/></svg></i>"
@@ -46,16 +46,16 @@
   }else{
     switch (term) {
       case "20":
-        itemSideSize = '108';
+        itemSideSize = '68';
         break;
       case "15":
-        itemSideSize = '138';
+        itemSideSize = '88';
         break;
       case "4":
-        itemSideSize = '178';
+        itemSideSize = '108';
         break;
       case "1":
-        itemSideSize = '190';
+        itemSideSize = '120';
         break;
       default:
         break;
